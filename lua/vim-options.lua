@@ -11,3 +11,4 @@ vim.cmd("Neotree toggle left")
 vim.g.mapleader = " "
 
 vim.cmd("highlight EndOfBuffer guifg=#45475A")
+vim.keymap.set("n", "<F2>", vim.lsp.buf.rename)
