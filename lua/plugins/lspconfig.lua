@@ -3,7 +3,7 @@ return {
 		"williamboman/mason.nvim",
 		opts = {
 			ensure_installed = {
-				        "rust-analyzer",
+				"rust-analyzer",
 			},
 		},
 		config = function()
@@ -14,7 +14,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "basedpyright" },
+				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls" },
 			})
 		end,
 	},
@@ -23,6 +23,8 @@ return {
 		"neovim/nvim-lspconfig",
 		opts = {
 			servers = {
+				cssls = {},
+				html = {},
 				basedpyright = {
 					settings = {
 						basedpyright = {
@@ -30,6 +32,7 @@ return {
 						},
 					},
 				},
+				javascript = {},
 			},
 		},
 		config = function()
@@ -44,6 +47,9 @@ return {
 			lspconfig.basedpyright.setup({
 				capabilities = capabilities,
 			})
+            lspconfig.css_variables.setup({capabilities = capabilities})
+            lspconfig.cssls.setup({capabilities = capabilities})
+			lspconfig.html.setup({capabilities = capabilities})
 			lspconfig.rust_analyzer.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
