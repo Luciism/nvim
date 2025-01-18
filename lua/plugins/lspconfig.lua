@@ -4,6 +4,7 @@ return {
 		opts = {
 			ensure_installed = {
 				"rust-analyzer",
+                "eslint_d"
 			},
 		},
 		config = function()
@@ -14,13 +15,15 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls" },
+				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls", "eslint" },
 			})
 		end,
 	},
-	"williamboman/nvim-lsp-installer",
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/nvim-lsp-installer",
+		},
 		opts = {
 			servers = {
 				cssls = {},
@@ -33,9 +36,13 @@ return {
 					},
 				},
 				javascript = {},
+				eslint = {},
+				ts_ls = {},
 			},
 		},
 		config = function()
+			require("nvim-lsp-installer").setup({})
+
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local on_attach = require("cmp_nvim_lsp").on_attach
 
@@ -44,12 +51,10 @@ return {
 
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.ts_ls.setup({ capabilities = capabilities })
-			lspconfig.basedpyright.setup({
-				capabilities = capabilities,
-			})
-            lspconfig.css_variables.setup({capabilities = capabilities})
-            lspconfig.cssls.setup({capabilities = capabilities})
-			lspconfig.html.setup({capabilities = capabilities})
+			lspconfig.basedpyright.setup({ capabilities = capabilities })
+			lspconfig.css_variables.setup({ capabilities = capabilities })
+			lspconfig.cssls.setup({ capabilities = capabilities })
+			lspconfig.html.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
