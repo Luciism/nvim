@@ -15,7 +15,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls", "eslint" },
+				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls", "eslint", "dockerls", "docker_compose_language_service" },
 			})
 		end,
 	},
@@ -49,6 +49,8 @@ return {
 			local lspconfig = require("lspconfig")
 			local util = require("lspconfig/util")
 
+            -- lspconfig.dockerls.setup({capabilities = capabilities})
+            -- lspconfig.docker_compose_language_service.setup({capabilities = capabilities})
 			lspconfig.lua_ls.setup({ capabilities = capabilities })
 			lspconfig.ts_ls.setup({ capabilities = capabilities })
 			lspconfig.basedpyright.setup({ capabilities = capabilities })
