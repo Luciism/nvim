@@ -18,6 +18,7 @@ return {
 			},
 		})
 
-		vim.keymap.set("n", "<C-n>", ":Neotree focus left<CR>")
+		vim.keymap.set("n", "<C-n>", ":Neotree focus left<CR>", {silent = true})
+		vim.keymap.set("n", "<C-M-n>", ":Neotree close left<CR>", {silent = true})
 	end,
 }
