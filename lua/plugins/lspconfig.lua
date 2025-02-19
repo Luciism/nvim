@@ -18,7 +18,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
 			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls", "eslint", "dockerls", "docker_compose_language_service" },
+				ensure_installed = { "lua_ls", "ts_ls", "basedpyright", "html", "cssls", "eslint", "dockerls", "docker_compose_language_service", "nil_ls", "graphql" },
 			})
 		end,
 	},
@@ -41,6 +41,7 @@ return {
 				javascript = {},
 				eslint = {},
 				ts_ls = {},
+				nil_ls = {},
 			},
 		},
 		config = function()
@@ -59,6 +60,7 @@ return {
 			lspconfig.basedpyright.setup({ capabilities = capabilities })
 			lspconfig.css_variables.setup({ capabilities = capabilities })
 			lspconfig.cssls.setup({ capabilities = capabilities })
+			lspconfig.nil_ls.setup({ capabilities = capabilities })
 			lspconfig.html.setup({ capabilities = capabilities })
 			lspconfig.rust_analyzer.setup({
 				on_attach = on_attach,

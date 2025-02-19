@@ -11,6 +11,7 @@ return {
                 null_ls.builtins.formatting.prettier,
                 null_ls.builtins.formatting.isort,
                 null_ls.builtins.formatting.black,
+                null_ls.builtins.formatting.nixfmt,
                 -- null_ls.builtins.formatting.eslint_d,
                 require("none-ls.formatting.eslint_d"),
                 -- require("none-ls.diagnostics.eslint_d")
