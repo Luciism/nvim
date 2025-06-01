@@ -1,14 +1,14 @@
 return {
-	{
-		"williamboman/mason.nvim",
-		opts = {
-			ensure_installed = {
-				"rust-analyzer",
+    {
+        "williamboman/mason.nvim",
+        opts = {
+            ensure_installed = {
+                "rust-analyzer",
                 "eslint_d"
-			},
-		},
-		config = function()
-			-- require("mason").setup()
+            },
+        },
+        config = function()
+            -- require("mason").setup()
             require("mason").setup({
                 PATH = "prepend", -- "skip" seems to cause the spawning error
             })
@@ -42,16 +42,25 @@ return {
 				eslint = {},
 				ts_ls = {},
 				nil_ls = {},
+                graphql = {
+                    command = "graphql-lsp",
+                    args = { "server", "-m", "stream" },
+                    -- customize filetypes to your needs
+                    filetypes = { "typescript", "typescriptreact", "graphql" },
+                    -- settings = {
+                    -- "graphql-config.load.legacy" = true
+                    -- }
+                }
 			},
 		},
 		config = function()
 			require("nvim-lsp-installer").setup({})
 
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
-			local on_attach = require("cmp_nvim_lsp").on_attach
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+            local on_attach = require("cmp_nvim_lsp").on_attach
 
-			local lspconfig = require("lspconfig")
-			local util = require("lspconfig/util")
+            local lspconfig = require("lspconfig")
+            local util = require("lspconfig/util")
 
             -- lspconfig.dockerls.setup({capabilities = capabilities})
             -- lspconfig.docker_compose_language_service.setup({capabilities = capabilities})
