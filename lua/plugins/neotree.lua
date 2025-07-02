@@ -9,6 +9,11 @@ return {
 	},
 	config = function()
 		require("neo-tree").setup({
+            window = {
+                mappings = {
+                    ["<C-n>"] = "close_window", -- This will close Neotree when you're in its buffer
+                }
+            },
 			close_if_last_window = true,
 			filesystem = {
 				filtered_items = {
@@ -19,6 +24,5 @@ return {
 		})
 
 		vim.keymap.set("n", "<C-n>", ":Neotree focus left<CR>", {silent = true})
-		vim.keymap.set("n", "<C-M-n>", ":Neotree close left<CR>", {silent = true})
 	end,
 }
