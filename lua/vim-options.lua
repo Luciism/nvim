@@ -15,12 +15,12 @@ vim.g.mapleader = " "
 vim.cmd("highlight EndOfBuffer guifg=#45475A")
 vim.keymap.set("n", "<F2>", vim.lsp.buf.rename)
 
-
 -- Treat *.tmux and *.tmux.conf as tmux filetype
 vim.api.nvim_create_augroup("ftdetect_tmux", { clear = true })
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  group = "ftdetect_tmux",
-  pattern = { "*.tmux", "*.tmux.conf" },
-  callback = function() vim.cmd("setfiletype tmux") end,
+    group = "ftdetect_tmux",
+    pattern = { "*.tmux", "*.tmux.conf" },
+    callback = function()
+        vim.cmd("setfiletype tmux")
+    end,
 })
-
