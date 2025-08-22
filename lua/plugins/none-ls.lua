@@ -54,6 +54,7 @@ return {
                     "remark",
                     "rustywind",
                     "yamlfmt",
+                    "eslint_d"
                 },
                 automatic_installation = true,
             })
