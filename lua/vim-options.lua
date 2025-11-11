@@ -1,6 +1,3 @@
-vim.cmd("set number")
-vim.cmd("set relativenumber")
-
 vim.cmd("set expandtab")
 vim.cmd("set tabstop=4")
 vim.cmd("set softtabstop=4")
@@ -24,3 +21,13 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
         vim.cmd("setfiletype tmux")
     end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "html", "javascript", "css", "json", "nix" },
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.shiftwidth = 2
+  end,
+})
+
